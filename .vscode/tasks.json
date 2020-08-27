@@ -1,0 +1,18 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "V Run",
+			"type": "shell",
+			"command": "v -cg -w build .\\vlog.v; cp .\\vlog.exe C:\\Users\\allie\\Downloads\\test\\vlog.exe; cd C:\\Users\\allie\\Downloads\\test; .\\vlog.exe",
+			// "command": "v -cg -w build ${file}; cp .\\vlog.exe C:\\Users\\allie\\Downloads\\test\\vlog.exe",
+			"problemMatcher": [],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}
