@@ -20,8 +20,8 @@ jobs:
 
       # Build nightly
       - name: Build vlog
-        run: v -os windows build vlog.v |
-             v -os linux build vlog.v 
+        run: v -tcc -os windows build vlog.v -tcc |
+             v -tcc -os linux build vlog.v 
              
       # Upload builds as artifacts
       - uses: actions/upload-artifact@v2
