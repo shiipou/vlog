@@ -10,8 +10,8 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
+        os: [ubuntu, macos, windows]
+    runs-on: ${{ matrix.os }}-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -30,8 +30,8 @@ jobs:
         with:
           name: builds
           path: |
-            if [ "${{matrix.os}}" -eq "windows-latest" ]; then 
-              vlog.exe
+            if [ "${{matrix.os}}" -eq "windows" ]; then
+              vlog-${{matrix.os}}.exe
             else
-              vlog
+              vlog-${{matrix.os}}
             fi
