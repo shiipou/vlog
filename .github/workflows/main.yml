@@ -8,7 +8,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v2
@@ -20,16 +23,15 @@ jobs:
 
       # Build nightly
       - name: Build vlog
-        run: v -tcc -os windows build vlog.v |
-             v -tcc -os linux build vlog.v 
+        run: v vlog.v
              
       # Upload builds as artifacts
       - uses: actions/upload-artifact@v2
         with:
           name: builds
           path: |
-            vlog
-            vlog.exe
-             
-             
-
+            if [ "${{matrix.os}}" -eq "windows-latest" ]; then 
+              vlog.exe
+            else
+              vlog
+            fi
