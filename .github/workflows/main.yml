@@ -23,7 +23,7 @@ jobs:
 
       # Build nightly
       - name: Build vlog
-        run: v vlog.v
+        run: v -o vlog-${{matrix.os}} vlog.v
              
       # Upload builds as artifacts
       - uses: actions/upload-artifact@v2
